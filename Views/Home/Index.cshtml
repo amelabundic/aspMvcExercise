@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Kategorija>
+
+@{
+    ViewData["Title"] = "Kategorije";
+}
+
+<div class="jumbotron">
+    <h1>Kategorije</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Naziv
+            </th>
+            <th>
+                Opis
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>
+                    @k.NazivKategorije
+                </td>
+                <td>
+                    @k.OpisKategorije
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@k.KategorijaId">Edit</a>*@ |
+                    <a href="@($"Home/PrikaziProizvode/{k.KategorijaId}")">Vidi proizvode</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Styles{
+    <style>
+        .jumbotron {
+            padding: 1em;
+        }
+
+            .jumbotron h1 {
+                font-size: 2em;
+            }
+    </style>
+}
+

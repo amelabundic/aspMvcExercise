@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Proizvod>
+
+@{
+    ViewData["Title"] = "Proizvodi";
+}
+
+<div class="jumbotron">
+    <h1>Proizvodi</h1>
+</div>
+<br />
+<div>
+    <h2> @ViewBag.Kategorija</h2>
+</div>
+
+<hr />
+
+@if (ViewBag.Kategorija != null)
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Naziv
+                </th>
+                <th>
+                    Cijena
+                </th>
+                <th>
+                    Kolicina
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>
+                        @p.NazivProizvoda
+                    </td>
+                    <td>
+                        @p.Cijena
+                    </td>
+                    <td>
+                        @p.KolicinaNaLageru
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Ne postojeća kategorija</p>
+}
+
+<a href="Home" class="btn btn-primary">Kategorije</a>
+@section Styles{
+    <style>
+        .jumbotron {
+            padding: 1em;
+        }
+
+            .jumbotron h1 {
+                font-size: 2em;
+            }
+    </style>
+}
+
+
+
